@@ -2,9 +2,9 @@
 
 module.exports = {
   development: {
-    client: "pg",
+    client: "sqlite3",
     connection: {
-      filename: "./src/database/db.sql",
+      filename: "./src/database/db.sqlite",
     },
     useNullAsDefault: true,
     migrations: {
