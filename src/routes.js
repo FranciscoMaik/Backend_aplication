@@ -5,7 +5,7 @@ const routes = express.Router();
 const MarketController = require("./controllers/MarketController");
 const ProductController = require("./controllers/ProductController");
 const ProductControllerUnic = require("./controllers/ProductControllerUnic");
-// const AdminController = require("./controllers/AdminController");
+const AdminController = require("./controllers/AdminController");
 
 //Rotas de mercado
 routes.get("/market", MarketController.index);
@@ -19,7 +19,7 @@ routes.post("/product", ProductController.create);
 routes.get("/productunic/:barcode", ProductControllerUnic.index);
 
 //Rota de Administrador
-// routes.get("/admin", AdminController.index);
-// routes.post("/admin", AdminController.create);
+routes.get("/admin", AdminController.index);
+routes.post("/admin", AdminController.create);
 
 module.exports = routes;
