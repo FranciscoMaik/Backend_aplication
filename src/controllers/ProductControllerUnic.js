@@ -62,7 +62,6 @@ async function addFlagAll(barcode) {
   const product = await database("product")
     .where("gtin", "=", barcode)
     .select("*");
-
   alterAllFlags(product, barcode);
 }
 
@@ -100,7 +99,6 @@ module.exports = {
         const dados = await saveDados(apiRequest);
         return response.json(dados);
       } catch (error) {
-        console.log(error);
         return response.json({
           err: "Não foi possivel cadastrar o código de barras!",
         });

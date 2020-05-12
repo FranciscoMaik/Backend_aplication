@@ -3,8 +3,8 @@ exports.up = function (knex) {
     table.string("gtin").primary();
     table.string("description").notNullable();
     table.string("barcode_image").notNullable();
-    table.decimal("flagCountAny");
-    table.decimal("flagCountMonth");
+    table.integer("flagCountAny");
+    table.integer("flagCountMonth");
   });
 };
 
