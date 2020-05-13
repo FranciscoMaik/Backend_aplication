@@ -1,12 +1,12 @@
-exports.up = function (knex) {
+exports.up = async (knex) => {
+  await knex.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
+
   return knex.schema.createTable("market", function (table) {
-    table.increments();
+    table.uuid("id").defaultTo(knex.raw("uuid_generate_v4()"));
     table.string("name").notNullable();
     table.string("street").notNullable();
     table.string("district").notNullable();
     table.string("phone");
-    table.integer("flagCountAny");
-    table.integer("flagCountMonth");
   });
 };
 

@@ -7,15 +7,18 @@ module.exports = {
   },
   async create(request, response) {
     const { name, street, district, phone } = request.body;
-    const [id] = await database("market").insert({
+    await database("market").insert({
       name,
       street,
       district,
       phone,
-      flagCountAny: 0,
-      flagCountMonth: 0,
     });
+    return response.status(200).send();
+  },
 
-    return response.json({ id });
+  async delete(request, response) {
+    const { id } = request.params;
+    await database("market").where({ id }).del();
+    return response.status(200).send();
   },
 };

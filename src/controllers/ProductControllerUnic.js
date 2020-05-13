@@ -1,5 +1,6 @@
 const database = require("../database/connection");
 const api = require("../services/api");
+
 setInterval(time, 86400000);
 
 function time() {
@@ -107,5 +108,11 @@ module.exports = {
       await addFlagAll(barcode);
       return response.json(product);
     }
+  },
+
+  async delete(request, response) {
+    const { barcode } = request.params;
+    await database("product").where("gtin", barcode).del();
+    return response.status(200).send();
   },
 };

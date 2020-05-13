@@ -3,19 +3,25 @@ const database = require("../database/connection");
 module.exports = {
   async index(request, response) {
     const { user, password } = request.body;
-    const market = await database("admin")
+    const admin = await database("admin")
       .where("user", "=", user, "and", "password", "=", password)
       .select("*")
       .first();
-    return response.json(market);
+    return response.json(admin);
   },
   async create(request, response) {
     const { user, password } = request.body;
-    const [id] = await database("admin").insert({
+    await database("admin").insert({
       user,
       password,
     });
 
-    return response.json({ id });
+    return response.status(200).send();
+  },
+
+  async delete(request, response) {
+    const { user } = request.params;
+    await database("admin").where({ user }).del();
+    return response.status(200).send();
   },
 };
