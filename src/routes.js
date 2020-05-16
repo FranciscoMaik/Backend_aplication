@@ -21,8 +21,8 @@ routes.get("/productunic/:barcode", ProductControllerUnic.index);
 routes.delete("/productunic/:barcode", ProductControllerUnic.delete);
 
 //Rota de Administrador
-routes.patch("/admin", AdminController.index);
-routes.post("/admin", AdminController.create);
+routes.get("/admin", AdminController.create);
+routes.post("/admin", AdminController.index);
 routes.delete("/admin/:user", AdminController.delete);
 
 module.exports = routes;
