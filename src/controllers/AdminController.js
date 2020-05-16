@@ -3,6 +3,7 @@ const database = require("../database/connection");
 module.exports = {
   async index(request, response) {
     const { user, password } = request.body;
+    console.log(user, password);
     const admin = await database("admin")
       .where("user", "=", user, "and", "password", "=", password)
       .select("*")
