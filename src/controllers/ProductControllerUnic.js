@@ -7,6 +7,7 @@ function time() {
   let date = new Date();
   //Quando for o dia 1 de todo mês a flag de contagem de quantas vezes
   // aquele produto foi adicionado a lista de alguém no mês será zerada
+  // outras alterações
   if (date.getDate() === 1) {
     seeAll();
   }
